@@ -1,0 +1,24 @@
+{
+    "name": "abduselam/afromessage",
+    "description": "PHP SDK for Afro message",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Abduselam\\Afromessage\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "abduselam1",
+            "email": "abduselamhafiz@gmail.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers":[
+                "Abduselam\\Afromessage\\AfroMessageServiceProvider"
+            ]
+        }
+    }
+}
