@@ -13,7 +13,9 @@
             "email": "abduselamhafiz@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "illuminate/support": "^10.23"
+    },
     "extra": {
         "laravel": {
             "providers":[
