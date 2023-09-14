@@ -18,7 +18,7 @@ class AfroMessage
     }
 
     /**
-     *This is a description of the function kl.
+     * Short code sender.
      *
      * @param string $recipient
      * @param int $codeLength code length default: 4
@@ -90,7 +90,7 @@ class AfroMessage
 
     }
 
-    
+
     public function send(
         string $recipient,
         string $message,
