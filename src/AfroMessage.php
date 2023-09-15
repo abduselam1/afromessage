@@ -1,6 +1,6 @@
 <?php
 
-namespace Abduselam\Afromessage;
+namespace Afromessage;
 
 use Illuminate\Http\Client\Response as ClientResponse;
 use Illuminate\Http\Response;
@@ -67,7 +67,7 @@ class AfroMessage
             'sender' => $sender,
             'callback' => $callback
         ]);
-        return $this->checkStatus($response);
+        return new AfroResponse($response);
 
     }
 
@@ -86,7 +86,7 @@ class AfroMessage
             'vc' => $verificationCode
         ]);
         
-        return $this->checkStatus($response);
+        return new AfroResponse($response);
 
     }
 
@@ -98,7 +98,7 @@ class AfroMessage
         string $sender = null,
         int $template = 0,
         $callback = null,
-        string $method = 'post'
+        string $method = 'get'
     )
     {
         $response = $this->http()->$method('https://api.afromessage.com/api/send',[
@@ -110,7 +110,7 @@ class AfroMessage
             'callback' => $callback,
         ]);
 
-        return $this->checkStatus($response);
+        return new AfroResponse($response);
 
     }
 

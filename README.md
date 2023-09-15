@@ -18,11 +18,11 @@ AFRO_API_KEY=*********
 Simple usage looks like this
 
 ```php
-use Abduselam\Afromessage\AfroMessage;
+use Afromessage\AfroMessage;
 
 $message = new AfroMessage();
 
-\Illuminate\Http\Response $response = $messsage->send("+251987654321","Hello there");
+$response = $messsage->send("+251987654321","Hello there");
 
 ```
 

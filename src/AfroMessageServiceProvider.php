@@ -1,6 +1,6 @@
 <?php
 
-namespace Abduselam\Afromessage;
+namespace Afromessage;
 
 use Illuminate\Support\ServiceProvider;
 
