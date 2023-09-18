@@ -62,7 +62,7 @@ This method helps you to send a short code Whether you want to send a one time p
 
 | Paramater | Type | Description
 | ------ | ------ | ------ |
-| codeLength | int | The character length of the security code. |
+| codeLength | int | The character length of the security code. Default is 4 |
 | type | string | The type of code you want to send (numeric, alphanumeric, alphabet). Defult is numeric |
 | timeToExpire | int | The number of seconds for this code to be expired (defualt 0 which is not expired.)|
 | prefix | string | A message prefix that you can prepend to the code |
