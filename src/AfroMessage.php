@@ -31,7 +31,6 @@ class AfroMessage
      * @param string $from The value of the system identifier id
      * @param string $sender The value of Sender Name to use for this message
      * @param string $callback The callback URL you want to receive SMS send progress. It should be a GET endpoint 
-     * @return string
      */
     static public function code(
         string $recipient, 
@@ -90,7 +89,16 @@ class AfroMessage
 
     }
 
-
+    /**
+     * Send a text message for single phone number
+     * @param string $recipient phone number of the recipient
+     * @param string $message
+     * @param string $from The value of the system identifier id
+     * @param string $sender The value of Sender Name to use for this message. only for verified users
+     * @param string $template Indicates the message is a template id rather than the actual message
+     * @param string $callback callback url
+     * @param string $method http methods post or get
+     */
     static public function send(
         string $recipient,
         string $message,
@@ -101,6 +109,8 @@ class AfroMessage
         string $method = 'get'
     )
     {
+        $method = strtolower($method);
+        
         $response = self::http()->$method('https://api.afromessage.com/api/send',[
             'to' => $recipient,
             'message' => $message,
