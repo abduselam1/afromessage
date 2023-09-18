@@ -2,6 +2,7 @@
     "name": "abduselam/afromessage",
     "description": "PHP SDK for Afro message",
     "license": "MIT",
+    "type": "library",
     "autoload": {
         "psr-4": {
             "Afromessage\\": "src/"
@@ -13,13 +14,14 @@
             "email": "abduselamhafiz@gmail.com"
         }
     ],
-    "require": {
-    },
     "extra": {
         "laravel": {
             "providers":[
                 "Afromessage\\AfroMessageServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "illuminate/support": "^10.23"
     }
 }

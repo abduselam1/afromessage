@@ -20,9 +20,7 @@ Simple usage looks like this
 ```php
 use Afromessage\AfroMessage;
 
-$message = new AfroMessage();
-
-$response = $messsage->send("+251987654321","Hello there");
+$response = AfroMessage::send("+251987654321","Hello there");
 
 ```
 
@@ -49,7 +47,7 @@ To send a text message to a phone number use this send method
 * Example 
 ```php
 
-$response = $messsage->send("+251987654321","Hello there",method: "GET");
+$response = AfroMessage::send("+251987654321","Hello there",method: "GET");
 
 ```
 
@@ -78,7 +76,7 @@ This method helps you to send a short code Whether you want to send a one time p
 * Example
 ```php
 
-$response = $messsage->code("+251987654321",codeLength: 5, type: 'alphanumeric', postfix: "Is your otp");
+$response = AfroMessage::code("+251987654321",codeLength: 5, type: 'alphanumeric', postfix: "Is your otp");
 
 
 ```
@@ -99,7 +97,7 @@ Verification method to validate code to the corresponding phone number
 * Example 
 ```php
 
-$response = $messsage->verify("23124",recipient: "+251987654321");
+$response = AfroMessage::verify("23124",recipient: "+251987654321");
 
 ```
 

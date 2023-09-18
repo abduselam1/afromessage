@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 class AfroMessage
 {
-    function http()
+    static function http()
     {
         return Http::withHeaders([
             'Authorization' => 'Bearer ' . env('AFRO_API_KEY'),
@@ -33,7 +33,7 @@ class AfroMessage
      * @param string $callback The callback URL you want to receive SMS send progress. It should be a GET endpoint 
      * @return string
      */
-    public function code(
+    static public function code(
         string $recipient, 
         int $codeLength = 4,
         string $type = 'number',
@@ -53,7 +53,7 @@ class AfroMessage
             'alphabet' => 1,
             'alphanumeric'=> 2
         ];
-        $response = $this->http()->get('https://api.afromessage.com/api/challenge', [
+        $response = self::http()->get('https://api.afromessage.com/api/challenge', [
             'to' => $recipient,
             'pr' => '',
             'ps' => $postfix,
@@ -78,9 +78,9 @@ class AfroMessage
      * @param string $verificationCode The verification Id you received when sending security codes manadatory if $recipient is not given
      */
 
-    public function verify($code, $recipient=null, $verificationCode = null)
+    static function verify($code, $recipient=null, $verificationCode = null)
     {
-        $response = $this->http()->get('https://api.afromessage.com/api/verify', [
+        $response = self::http()->get('https://api.afromessage.com/api/verify', [
             'to' => $recipient,
             'code' => $code,
             'vc' => $verificationCode
@@ -91,7 +91,7 @@ class AfroMessage
     }
 
 
-    public function send(
+    static public function send(
         string $recipient,
         string $message,
         string $from = null,
@@ -101,7 +101,7 @@ class AfroMessage
         string $method = 'get'
     )
     {
-        $response = $this->http()->$method('https://api.afromessage.com/api/send',[
+        $response = self::http()->$method('https://api.afromessage.com/api/send',[
             'to' => $recipient,
             'message' => $message,
             'template' => $template,
@@ -112,22 +112,6 @@ class AfroMessage
 
         return new AfroResponse($response);
 
-    }
-
-
-    public function checkStatus(ClientResponse $response): Response
-    { 
-        $responsBody = json_decode($response->body(), associative: true);
-
-        if($response->status() == 401){
-            return new Response([
-                'message' => "Account balance is too low. Please refill or contact support."
-            ]);
-        }
-        if ($responsBody['acknowledge'] == 'error') {
-            return new Response($responsBody,422);
-        }
-        return Response($responsBody,200);
     }
 
 }
