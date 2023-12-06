@@ -12,7 +12,11 @@ composer require abduselam/afromessage
 ```env
 AFRO_API_KEY=*********
 ```
+* Publish config file
 
+```bash
+php artisan vendor:publish --tag=afromessage-config
+```
 ## Gettig started
 
 Simple usage looks like this

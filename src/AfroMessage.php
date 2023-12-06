@@ -11,7 +11,7 @@ class AfroMessage
     static function http()
     {
         return Http::withHeaders([
-            'Authorization' => 'Bearer ' . env('AFRO_API_KEY'),
+            'Authorization' => 'Bearer ' . config('afromessage.api_key'),
             'Accept'        => 'application/json',
             'Content-type'  => 'application/json'
         ]);
