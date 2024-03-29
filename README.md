@@ -7,10 +7,12 @@ This SDK provides a convinient access to the Afro message API.
 ```bash
 composer require abduselam/afromessage
 ```
-* Put your key in your .env 
+* Put your api key and sender id in your .env 
 
 ```env
 AFRO_API_KEY=*********
+
+AFRO_SENDER_ID=*********
 ```
 * Publish config file
 
@@ -43,7 +45,7 @@ To send a text message to a phone number use this send method
 | Paramater | Type | Description
 | ------ | ------ | ------ |
 | from | string | The value of the system identifier id if you have subscribed to multiple short codes.|
-| sender | string | The value of Sender Name to use for this message. only for verified users |.
+| sender | string | The value of Sender Name to use for this message. only for verified users |. You can put it in your .env to be used by default|
 | template | int | Indicates the message is a template id rather than the actual message |
 | callback | string | The callback URL(GET) you want to receive SMS send progress.
 | method | string | http method POST or GET (defuld is POST) |
@@ -74,7 +76,7 @@ This method helps you to send a short code Whether you want to send a one time p
 | spaceBefore | int | The number of empty spaces you want to add between generated code and message prefix.(default is 1) |
 | spaceAfter | int | The number of empty spaces you want to add between generated code and message postfix.(default is 1) |
 | from | string | The value of the system identifier id if you have subscribed to multiple short codes.|
-| sender | string | The value of Sender Name to use for this message. only for verified users |.
+| sender | string | The value of Sender Name to use for this message. only for verified users |. You can put it in your .env to be used by default.
 | callback | string | The callback URL(GET) you want to receive SMS send progress.
 
 * Example
