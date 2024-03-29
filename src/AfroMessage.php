@@ -52,6 +52,9 @@ class AfroMessage
             'alphabet' => 1,
             'alphanumeric'=> 2
         ];
+
+        $sender = $sender?$sender: config('afromessage.sender_id');
+
         $response = self::http()->get('https://api.afromessage.com/api/challenge', [
             'to' => $recipient,
             'pr' => '',
@@ -94,7 +97,7 @@ class AfroMessage
      * @param string $recipient phone number of the recipient
      * @param string $message
      * @param string $from The value of the system identifier id
-     * @param string $sender The value of Sender Name to use for this message. only for verified users
+     * @param string $sender The value of Sender Name to use for this message. only for verified users 
      * @param string $template Indicates the message is a template id rather than the actual message
      * @param string $callback callback url
      * @param string $method http methods post or get
@@ -110,6 +113,8 @@ class AfroMessage
     )
     {
         $method = strtolower($method);
+
+        $sender = $sender?$sender: config('afromessage.sender_id');
         
         $response = self::http()->$method('https://api.afromessage.com/api/send',[
             'to' => $recipient,
