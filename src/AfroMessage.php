@@ -124,4 +124,28 @@ class AfroMessage
         return new AfroResponse($response);
 
     }
+
+    public static function bulk(
+        array $recipients,
+        ?string $message = null,
+        ?string $from = null,
+        ?string $sender = null,
+        ?string $campaign = null,
+        ?string $createCallback = null,
+        ?string $statusCallback = null,
+
+    ): AfroResponse {
+        $body = [
+            'to' => $recipients,
+            'message' => $message,
+            'from' => $from,
+            'sender' => $sender,
+            'campaign' => $campaign,
+            'createCallback' => $createCallback,
+            'statusCallback' => $statusCallback,
+        ];
+        $response = self::http()->post('https://api.afromessage.com/api/bulk_send', $body);
+
+        return new AfroResponse($response);
+    }
 }
