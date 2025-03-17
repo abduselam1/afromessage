@@ -23,5 +23,8 @@
     },
     "require-dev": {
         "illuminate/support": "^10.23"
+    },
+    "require": {
+        "laravel/pint": "^1.21"
     }
 }
